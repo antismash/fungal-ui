@@ -39,13 +39,18 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 vm.active_submission = true;
                 vm.errror_message = null;
 
+                vm.submission.genefinder = 'none';
+
                 if (vm.upload_file) {
                     vm.submission.seq = vm.file;
                     if (vm.gff_file) {
                         vm.submission.gff3 = vm.gff_file;
                         vm.submission.genefinder = 'none';
-                    } else {
-                        vm.submission.genefinder = 'glimmerhmm';
+                    }
+                    else {
+                        if (vm.isFastaFile(vm.file.name)) {
+                            vm.submission.genefinder = "glimmerhmm";
+                        }
                     }
                 } else {
                     vm.submission.ncbi = vm.ncbi;
@@ -107,10 +112,6 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             }
 
             vm.showGffInput = function () {
-                return vm.showGeneFinder();
-            }
-
-            vm.showGeneFinder = function () {
                 if (!vm.upload_file) {
                     return false;
                 }
