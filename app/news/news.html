@@ -1,3 +1,9 @@
+<div uib-alert class="alert-warning">
+  <strong>This is the fungiSMASH 5 beta</strong><br>
+  While we feel it is pretty good already, this version might still be a bit rough at the edges.
+  Until spring 2019, you can still <a href="https://old.fungismash.secondarymetabolites.org/">run fungiSMASH 4 jobs here</a>.
+</div>
+
 <div uib-alert ng-repeat="alert in ctrl.alerts" ng-class="'alert-' + (alert.category || 'warning')" close="ctrl.closeAlert($index)">
   <strong>{{alert.teaser}}</strong><br/>
   {{alert.text}}
