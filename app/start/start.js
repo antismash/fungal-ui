@@ -43,6 +43,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                     }
                 } else {
                     vm.submission.ncbi = vm.ncbi;
+                    vm.submission.genefinder = 'none';
                 }
 
                 if (vm.email) {
