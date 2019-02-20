@@ -33,10 +33,6 @@ angular.module('antismash.ui.bacterial.routing', [
         templateUrl: 'about/about.html',
         controller: 'AsAboutCtrl',
         controllerAs: 'ctrl'
-      }).
-      state('help', {
-        url: '/help',
-        templateUrl: 'help/help.html'
       });
 
   }]);
