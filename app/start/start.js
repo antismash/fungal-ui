@@ -9,7 +9,9 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.valid_gff_endings = '.gff,.gff3';
 
             // Defaullt values
-            vm.submission = {};
+            vm.submission = {
+                genefinder: 'glimmerhmm',
+            };
             vm.extra_features = [
                 { id: 'knownclusterblast', description: 'KnownClusterBlast', default: true },
                 { id: 'clusterblast', description: 'ClusterBlast', default: false },
@@ -35,6 +37,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                     vm.submission.seq = vm.file;
                     if (vm.gff_file) {
                         vm.submission.gff3 = vm.gff_file;
+                        vm.submission.genefinder = 'none';
                     }
                 } else {
                     vm.submission.ncbi = vm.ncbi;
