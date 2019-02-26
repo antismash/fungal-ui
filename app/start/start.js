@@ -11,6 +11,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             // Defaullt values
             vm.submission = {
                 genefinder: 'none',
+                jobtype: 'antismash4',
             };
             vm.extra_features = [
                 { id: 'knownclusterblast', description: 'KnownClusterBlast', default: true },
