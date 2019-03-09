@@ -38,6 +38,10 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                     vm.submission.seq = vm.file;
                     if (vm.gff_file) {
                         vm.submission.gff3 = vm.gff_file;
+                    } else {
+                        if (isFastaFile(vm.file.name)) {
+                            vm.submission.genefinder = 'glimmerhmm';
+                        }
                     }
                 } else {
                     vm.submission.ncbi = vm.ncbi;
