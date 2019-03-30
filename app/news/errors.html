@@ -1,3 +1,7 @@
+<div uib-alert class="alert-danger" >
+  <strong>Server Outage</strong> Dear fungiSMASH users. On Friday the second of three servers providing fungiSMASH died, taking both the job queue and the shared storage with it. We're looking into restoring service, but this might take a couple of days.
+  We apologise for the inconvenience.
+</div>
 
 <div uib-alert ng-class="'alert-danger'" ng-repeat="e in ctrl.errors" close="ctrl.close($index)">
   <strong>{{e.teaser}}</strong> {{e.text}}
