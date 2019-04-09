@@ -3,17 +3,17 @@
   <p>
     Submitted: {{ctrl.job.submitted | date : 'MMM d, y HH:mm:ss'}}<br>
     Status:
-    <img ng-src="/images/{{ctrl.job.short_status}}.svg" width="16px">
+    <img ng-src="/images/{{ctrl.job.state}}.svg" width="16px">
     {{ctrl.job.status}}<br>
     Last status change: {{ctrl.job.last_changed | date : 'MMM d, y HH:mm:ss'}}<br>
-    <div class="result-link" ng-if="ctrl.job.short_status == 'done'">
+    <div class="result-link" ng-if="ctrl.job.state == 'done'">
       See the <a ng-href="{{ctrl.job.result_url}}">results</a>.
     </div>
   </p>
-  <p ng-if="ctrl.job.short_status == 'removed'">
+  <p ng-if="ctrl.job.state == 'removed'">
     Your job has exceeded the maximum storage time and was removed.
   </p>
-  <div ng-if="ctrl.job.short_status != 'removed'">
+  <div ng-if="ctrl.job.state != 'removed'">
     <p><b>Important:</b> If you did not provide an email address, please bookmark this page so you can access your antiSMASH
       results later.</p>
     <p>If you specified an email address on the job submission page, you will be notified by email once the job is complete.</p>

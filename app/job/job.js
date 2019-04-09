@@ -33,11 +33,11 @@ angular.module('antismash.ui.bacterial.as_job', [])
                 .then(function (resp) {
                     job_info.filename = resp.data.filename;
                     job_info.status = resp.data.status;
-                    job_info.short_status = resp.data.short_status;
+                    job_info.state = resp.data.state;
                     job_info.result_url = resp.data.result_url;
                     job_info.submitted = Date.parse(resp.data.added_ts);
                     job_info.last_changed = Date.parse(resp.data.last_changed_ts);
-                    if (job_info.short_status == "done" || job_info.short_status == "failed") {
+                    if (job_info.state == "done" || job_info.state == "failed") {
                         return;
                     }
                     // If status is neither 'done' nor 'failed', trigger a refresh.
@@ -49,7 +49,7 @@ angular.module('antismash.ui.bacterial.as_job', [])
                         job_info.result_url = '';
                         job_info.submitted = null;
                         job_info.last_changed = null;
-                        job_info.short_status = "404";
+                        job_info.state = "404";
                         job_info.status = "No job found with ID '" + job_id + "'. Please check the ID and try again.";
                         return;
                     }
