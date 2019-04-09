@@ -150,7 +150,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             }
 
             vm.openSampleOutput = function () {
-                $window.open("/upload/example/index.html", "_blank");
+                $window.open("/upload/fungal-example/index.html", "_blank");
             }
 
             vm.loadJob = function () {
