@@ -27,8 +27,6 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 vm.submission[feature.id] = feature.default;
             }
 
-            vm.cf_threshold = 0.6;
-
             vm.strictness_levels = [
                 { id: 'strict', description: 'Detects well-defined clusters containing all required parts.' },
                 { id: 'relaxed', description: 'Detects partial clusters missing one or more functional parts.' },
