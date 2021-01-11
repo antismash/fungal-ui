@@ -8,18 +8,22 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.valid_endings = '.gbk,.gb,.gbff,.emb,.embl,.fa,.fasta,.fna';
             vm.valid_gff_endings = '.gff,.gff3';
 
+            vm.run_beta = true;
+
             // Defaullt values
             vm.submission = {
-                jobtype: 'antismash5',
             };
             vm.extra_features = [
-                { id: 'knownclusterblast', description: 'KnownClusterBlast', default: true },
-                { id: 'clusterblast', description: 'ClusterBlast', default: false },
-                { id: 'subclusterblast', description: 'SubClusterBlast', default: true },
-                { id: 'asf', description: 'ActiveSiteFinder', default: true },
-                { id: 'clusterhmmer', description: 'Cluster Pfam analysis', default: false },
-                { id: 'pfam2go', description: 'Pfam-based GO term annotation', default: false },
-                { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false, disabled: true },
+                { id: 'knownclusterblast', description: 'KnownClusterBlast', default: true, stable: true, beta: true },
+                { id: 'clusterblast', description: 'ClusterBlast', default: false, stable: true, beta: true },
+                { id: 'subclusterblast', description: 'SubClusterBlast', default: true, stable: true, beta: true },
+                { id: 'cc_mibig', description: 'MIBiG cluster comparison', default: false, stable: false, beta: true },
+                { id: 'asf', description: 'ActiveSiteFinder', default: true, stable: true, beta: true },
+                { id: 'rre', description: 'RREFinder', default: true, stable: false, beta: true },
+                { id: 'clusterhmmer', description: 'Cluster Pfam analysis', default: false, stable: true, beta: true },
+                { id: 'pfam2go', description: 'Pfam-based GO term annotation', default: false, stable: true, beta: true },
+                { id: 'tigrfam', description: 'TIGRFam analysis', default: false, stable: false, beta: true },
+                { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false, stable: true, beta: true, disabled: true },
             ];
 
             for (var i = 0; i < vm.extra_features.length; i++) {
@@ -36,6 +40,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.hmmdetection_strictness = 1;
 
             vm.submit = function (form) {
+                vm.submission.jobtype = vm.run_beta ? 'antismash6' : 'antismash5',
                 vm.active_submission = true;
                 vm.errror_message = null;
 
@@ -59,6 +64,16 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
 
                 if (vm.email) {
                     vm.submission.email = vm.email;
+                }
+
+                for (var i = 0; i < vm.extra_features.length; i++) {
+                    var feature = vm.extra_features[i];
+                    if (vm.run_beta && !feature.beta) {
+                        delete vm.submission[feature.id];
+                    }
+                    if (!vm.run_beta && !feature.stable) {
+                        delete vm.submission[feature.id];
+                    }
                 }
 
                 vm.submission.hmmdetection_strictness = vm.strictness_levels[vm.hmmdetection_strictness].id;
@@ -182,4 +197,15 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 }
                 return descriptions;
             };
+
+            vm.filterFeatureByStatus = function (value) {
+                if (value.beta && vm.run_beta) {
+                    return true;
+                }
+                if (value.stable && !vm.run_beta) {
+                    return true;
+                }
+                return false;
+            }
+
         }]);
