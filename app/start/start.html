@@ -80,6 +80,30 @@
             </div>
             <label for="gff" class="col-md-5">Feature annotations (optional, GFF3 format)</label>
           </div>
+          <div class="form-group row" ng-show="ctrl.run_beta">
+            <div class="col-md-3 col-md-offset-1">
+              <label class="checkbox"><input type="checkbox" ng-model="ctrl.upload_sideload_file">Upload extra annotations</label>
+            </div>
+          </div>
+          <div class="form-group row" ng-show="ctrl.run_beta && ctrl.upload_sideload_file">
+            <div class="col-md-3">
+              <a href="https://docs.antismash.secondarymetabolites.org/sideloading/" target="_blank">What is this?</a>
+            </div>
+            <div class="col-md-8">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input class="form-control" type="text" ng-model="ctrl.sideload_file.name" readonly>
+                  <span class="input-group-btn">
+                  <span class="btn btn-default btn-file"> Browse
+                    <input ng-model="ctrl.sideload_file" ngf-select type="file" id="sideload-file"
+                           ngf-accept="'.json'" ngf-pattern="'.json'"> </span>
+                  </span>
+                </div>
+              </div>
+              <label for="sideload-file" class="col-md-6">antiSMASH annotations sideload file (JSON).</label>
+            </div>
+          </div>
+
         </fieldset>
 
         <fieldset>
