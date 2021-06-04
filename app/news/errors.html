@@ -1,12 +1,3 @@
-<div uib-alert class="alert-danger">
-  <strong>Server move after outage</strong><br>
-  Dear fungiSMASH users. On 2019-03-29 our old fungiSMASH site died.
-  In order to restore the service, we have moved the website to the same servers running bacterial antiSMASH.
-  To keep the load manageable until we can buy some new servers, we have disabled CPU intensive analyses like
-  CASSIS for the time being.<br>
-  We apologise for the inconvenience, the antiSMASH team.
-</div>
-
 <div uib-alert ng-class="'alert-danger'" ng-repeat="e in ctrl.errors" close="ctrl.close($index)">
   <strong>{{e.teaser}}</strong> {{e.text}}
 </div>
