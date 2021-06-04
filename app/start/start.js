@@ -8,7 +8,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.valid_endings = '.gbk,.gb,.gbff,.emb,.embl,.fa,.fasta,.fna';
             vm.valid_gff_endings = '.gff,.gff3';
 
-            vm.run_beta = true;
+            vm.run_beta = false;
 
             vm.upload_sideload_file = false;
 
@@ -19,12 +19,12 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 { id: 'knownclusterblast', description: 'KnownClusterBlast', default: true, stable: true, beta: true },
                 { id: 'clusterblast', description: 'ClusterBlast', default: false, stable: true, beta: true },
                 { id: 'subclusterblast', description: 'SubClusterBlast', default: true, stable: true, beta: true },
-                { id: 'cc_mibig', description: 'MIBiG cluster comparison', default: false, stable: false, beta: true },
+                { id: 'cc_mibig', description: 'MIBiG cluster comparison', default: false, stable: true, beta: true },
                 { id: 'asf', description: 'ActiveSiteFinder', default: true, stable: true, beta: true },
-                { id: 'rre', description: 'RREFinder', default: true, stable: false, beta: true },
+                { id: 'rre', description: 'RREFinder', default: true, stable: true, beta: true },
                 { id: 'clusterhmmer', description: 'Cluster Pfam analysis', default: false, stable: true, beta: true },
                 { id: 'pfam2go', description: 'Pfam-based GO term annotation', default: false, stable: true, beta: true },
-                { id: 'tigrfam', description: 'TIGRFam analysis', default: false, stable: false, beta: true },
+                { id: 'tigrfam', description: 'TIGRFam analysis', default: false, stable: true, beta: true },
                 { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false, stable: true, beta: true, disabled: true },
             ];
 
@@ -42,7 +42,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.hmmdetection_strictness = 1;
 
             vm.submit = function (form) {
-                vm.submission.jobtype = vm.run_beta ? 'antismash6' : 'antismash5',
+                vm.submission.jobtype = 'antismash6';
                 vm.active_submission = true;
                 vm.errror_message = null;
 
