@@ -25,11 +25,19 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 { id: 'clusterhmmer', description: 'Cluster Pfam analysis', default: false, stable: true, beta: true },
                 { id: 'pfam2go', description: 'Pfam-based GO term annotation', default: false, stable: true, beta: true },
                 { id: 'tigrfam', description: 'TIGRFam analysis', default: false, stable: true, beta: true },
+            ];
+
+            vm.slow_features = [
                 { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false, stable: true, beta: true },
             ];
 
             for (var i = 0; i < vm.extra_features.length; i++) {
                 var feature = vm.extra_features[i];
+                vm.submission[feature.id] = feature.default;
+            }
+
+            for (var i = 0; i < vm.slow_features.length; i++) {
+                var feature = vm.slow_features[i];
                 vm.submission[feature.id] = feature.default;
             }
 
