@@ -1,3 +1,9 @@
 <div uib-alert ng-class="'alert-danger'" ng-repeat="e in ctrl.errors" close="ctrl.close($index)">
   <strong>{{e.teaser}}</strong> {{e.text}}
 </div>
+
+<div uib-alert ng-class="'alert-danger'">
+  <strong>Maintenance scheduled 2022-01-24 - 2022-01-28</strong><br>
+  Due to server maintenance in the week of Jan 24th to 28th, our services will run at reduced capacity.
+  Some interrruptions might occur. We apologise for the inconvenience.
+</div>
