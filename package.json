@@ -39,6 +39,6 @@
     "lite-server": "^2.2.0"
   },
   "dependencies": {
-    "bower-npm-resolver": "^0.4.0"
+    "bower-npm-resolver": "^0.10.0"
   }
 }
