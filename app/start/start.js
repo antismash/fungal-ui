@@ -8,7 +8,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.valid_endings = '.gbk,.gb,.gbff,.emb,.embl,.fa,.fasta,.fna';
             vm.valid_gff_endings = '.gff,.gff3';
 
-            vm.run_beta = false;
+            vm.run_beta = true;
 
             vm.upload_sideload_file = false;
 
