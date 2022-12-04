@@ -44,13 +44,15 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.strictness_levels = [
                 { id: 'strict', description: 'Detects well-defined clusters containing all required parts.' },
                 { id: 'relaxed', description: 'Detects partial clusters missing one or more functional parts.' },
-                { id: 'loose', description: 'Detects poorly-defined clusters and clusters that likely match primary metabolites.',
-                  warning: 'Likely to cause false positives.' },
+                {
+                    id: 'loose', description: 'Detects poorly-defined clusters and clusters that likely match primary metabolites.',
+                    warning: 'Likely to cause false positives.'
+                },
             ];
             vm.hmmdetection_strictness = 1;
 
             vm.submit = function (form) {
-                vm.submission.jobtype = 'antismash6';
+                vm.submission.jobtype = vm.run_beta ? 'antismash7' : 'antismash6';
                 vm.active_submission = true;
                 vm.errror_message = null;
 
