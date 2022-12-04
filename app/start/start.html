@@ -17,7 +17,8 @@
           <legend>Notification settings</legend>
           <div class="form-group row">
             <div class="col-md-4" ng-class="{'has-error': nucleotideForm.$error.email}">
-              <input class="form-control" type="email" placeholder="your@email.com" ng-model="ctrl.email" id="email" ng-class="{'form-error-bg': nucleotideForm.$error.email}">
+              <input class="form-control" type="email" placeholder="your@email.com" ng-model="ctrl.email" id="email"
+                ng-class="{'form-error-bg': nucleotideForm.$error.email}">
               <p class="help-block" ng-show="nucleotideForm.$error.email">
                 <i class="fa fa-close"></i> Invalid email address.
               </p>
@@ -37,17 +38,18 @@
           <legend>Data input</legend>
           <div class="form-group row">
             <div class="col-md-3">
-              <toggle-switch ng-model="ctrl.upload_file" on-label="Upload file" off-label="Get from NCBI" knob-label="{{ctrl.upload_file ? 'Get from NCBI' : 'Upload file'}}"
-                class="switch-default"></toggle-switch>
+              <toggle-switch ng-model="ctrl.upload_file" on-label="Upload file" off-label="Get from NCBI"
+                knob-label="{{ctrl.upload_file ? 'Get from NCBI' : 'Upload file'}}" class="switch-default">
+              </toggle-switch>
             </div>
             <div class="col-md-8" ng-show="ctrl.upload_file">
               <div class="col-md-6">
                 <div class="input-group">
                   <input class="form-control" type="text" ng-model="ctrl.file.name" readonly>
                   <span class="input-group-btn">
-                  <span class="btn btn-default btn-file"> Browse
-                    <input ng-model="ctrl.file" ngf-select type="file" id="seq"
-                           ngf-accept="ctrl.valid_endings" ngf-pattern="ctrl.valid_endings"> </span>
+                    <span class="btn btn-default btn-file"> Browse
+                      <input ng-model="ctrl.file" ngf-select type="file" id="seq" ngf-accept="ctrl.valid_endings"
+                        ngf-pattern="ctrl.valid_endings"> </span>
                   </span>
                 </div>
               </div>
@@ -55,7 +57,8 @@
             </div>
             <div class="col-md-8" ng-hide="ctrl.upload_file">
               <div class="col-md-6" ng-class="{'has-error': nucleotideForm.$error.pattern}">
-                <input class="form-control" type="text" placeholder="NCBI acc #" ng-model="ctrl.ncbi" id="ncbi"ng-pattern="/^[A-Za-z0-9_]{1,18}(?:\.[0-9])?$/"
+                <input class="form-control" type="text" placeholder="NCBI acc #" ng-model="ctrl.ncbi" id="ncbi"
+                  ng-pattern="/^[A-Za-z0-9_]{1,18}(?:\.[0-9])?$/"
                   ng-class="{'form-error-bg': nucleotideForm.$error.pattern}">
                 <p class="help-block" ng-show="nucleotideForm.$error.pattern">
                   <i class="fa fa-close"></i> Invalid NCBI ID.
@@ -68,13 +71,14 @@
             <div class="col-md-7">
               <div class="input-group">
                 <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><i class="fa fa-trash" ng-click="ctrl.clearGff()"></i></button>
+                  <button class="btn btn-default" type="button"><i class="fa fa-trash"
+                      ng-click="ctrl.clearGff()"></i></button>
                 </span>
                 <input class="form-control" type="text" ng-model="ctrl.gff_file.name" readonly>
                 <span class="input-group-btn">
                   <span class="btn btn-default btn-file"> Browse
-                    <input ng-model="ctrl.gff_file" ngf-select type="file" id="gff"
-                           ngf-accept="ctrl.valid_gff_endings" ngf-pattern="ctrl.valid_gff_endings"> </span>
+                    <input ng-model="ctrl.gff_file" ngf-select type="file" id="gff" ngf-accept="ctrl.valid_gff_endings"
+                      ngf-pattern="ctrl.valid_gff_endings"> </span>
                 </span>
               </div>
             </div>
@@ -82,7 +86,8 @@
           </div>
           <div class="form-group row">
             <div class="col-md-3 col-md-offset-1">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.upload_sideload_file">Upload extra annotations</label>
+              <label class="checkbox"><input type="checkbox" ng-model="ctrl.upload_sideload_file">Upload extra
+                annotations</label>
             </div>
           </div>
           <div class="form-group row" ng-show="ctrl.upload_sideload_file">
@@ -94,9 +99,9 @@
                 <div class="input-group">
                   <input class="form-control" type="text" ng-model="ctrl.sideload_file.name" readonly>
                   <span class="input-group-btn">
-                  <span class="btn btn-default btn-file"> Browse
-                    <input ng-model="ctrl.sideload_file" ngf-select type="file" id="sideload-file"
-                           ngf-accept="'.json'" ngf-pattern="'.json'"> </span>
+                    <span class="btn btn-default btn-file"> Browse
+                      <input ng-model="ctrl.sideload_file" ngf-select type="file" id="sideload-file"
+                        ngf-accept="'.json'" ngf-pattern="'.json'"> </span>
                   </span>
                 </div>
               </div>
@@ -135,16 +140,19 @@
           </legend>
           <div class="form-group row">
             <div class="col-md-4" ng-repeat="c in ctrl.extra_features | filter: ctrl.filterFeatureByStatus">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]" ng-disabled="c.disabled">{{c.description}}</label>
+              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]"
+                  ng-disabled="c.disabled">{{c.description}}</label>
             </div>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>Time-consuming features <small>(Increasing run-time from minutes to hours per chromosome)</small></legend>
+          <legend>Time-consuming features <small>(Increasing run-time from minutes to hours per chromosome)</small>
+          </legend>
           <div class="form-group row">
             <div class="col-md-6" ng-repeat="c in ctrl.slow_features | filter: ctrl.filterFeatureByStatus">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]" ng-disabled="c.disabled">{{c.description}}</label>
+              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]"
+                  ng-disabled="c.disabled">{{c.description}}</label>
             </div>
           </div>
         </fieldset>
@@ -155,7 +163,8 @@
           </div>
           <div class="form-group well row">
             <div class="col-md-4 col-md-offset-4 ">
-              <button class="btn btn-primary btn-block" type="submit" ng-click="ctrl.submit(form)" ng-disabled="!ctrl.validJob() || !nucleotideForm.$valid || ctrl.active_submission">Submit</button>
+              <button class="btn btn-primary btn-block" type="submit" ng-click="ctrl.submit(form)"
+                ng-disabled="!ctrl.validJob() || !nucleotideForm.$valid || ctrl.active_submission">Submit</button>
             </div>
           </div>
         </fieldset>
@@ -169,12 +178,14 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <input type="text" class="form-control" ng-model="ctrl.job_id" id="asID" name="asID" placeholder="taxon-aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
-                required ng-pattern="/^((bacteria|fungi|plants)-[0-F]{8}-[0-F]{4}-[0-F]{4}-[0-F]{4}-[0-F]{12}|example)$/i">
+              <input type="text" class="form-control" ng-model="ctrl.job_id" id="asID" name="asID"
+                placeholder="taxon-aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" required
+                ng-pattern="/^((bacteria|fungi|plants)-[0-F]{8}-[0-F]{4}-[0-F]{4}-[0-F]{4}-[0-F]{12}|example)$/i">
               <i class="form-control-feedback fa fa-close" ng-show="existingJobForm.$error.pattern"></i>
             </div>
             <div class="col-md-4">
-              <button class="btn btn-primary btn-block" ng-click="ctrl.loadJob()" ng-disabled="existingJobForm.$invalid">Load</button>
+              <button class="btn btn-primary btn-block" ng-click="ctrl.loadJob()"
+                ng-disabled="existingJobForm.$invalid">Load</button>
             </div>
           </div>
         </div>
