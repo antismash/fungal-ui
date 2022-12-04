@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-8" ng-hide="ctrl.upload_file">
               <div class="col-md-6" ng-class="{'has-error': nucleotideForm.$error.pattern}">
-                <input class="form-control" type="text" placeholder="NCBI acc #" ng-model="ctrl.ncbi" id="ncbi"ng-pattern="/^[A-Za-z0-9_]{1,16}(?:\.[0-9])?$/"
+                <input class="form-control" type="text" placeholder="NCBI acc #" ng-model="ctrl.ncbi" id="ncbi"ng-pattern="/^[A-Za-z0-9_]{1,18}(?:\.[0-9])?$/"
                   ng-class="{'form-error-bg': nucleotideForm.$error.pattern}">
                 <p class="help-block" ng-show="nucleotideForm.$error.pattern">
                   <i class="fa fa-close"></i> Invalid NCBI ID.
