@@ -8,7 +8,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.valid_endings = '.gbk,.gb,.gbff,.emb,.embl,.fa,.fasta,.fna';
             vm.valid_gff_endings = '.gff,.gff3';
 
-            vm.run_beta = true;
+            vm.run_beta = false;
 
             vm.upload_sideload_file = false;
 
@@ -52,7 +52,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.hmmdetection_strictness = 1;
 
             vm.submit = function (form) {
-                vm.submission.jobtype = vm.run_beta ? 'antismash7' : 'antismash6';
+                vm.submission.jobtype = vm.run_beta ? 'antismash7' : 'antismash7';
                 vm.active_submission = true;
                 vm.errror_message = null;
 
