@@ -26,6 +26,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 { id: 'clusterhmmer', description: 'Cluster Pfam analysis', default: false, stable: true, beta: true },
                 { id: 'pfam2go', description: 'Pfam-based GO term annotation', default: false, stable: true, beta: true },
                 { id: 'tigrfam', description: 'TIGRFam analysis', default: false, stable: true, beta: true },
+                { id: 'ncbi_context', description: 'NCBI genomic context links', default: false, stable: true, beta: true },
             ];
 
             vm.slow_features = [
