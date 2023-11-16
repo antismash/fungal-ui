@@ -99,11 +99,11 @@
             <div class="col-md-8">
               <div class="col-md-6">
                 <div class="input-group">
-                  <input class="form-control" type="text" ng-model="ctrl.sideload_file.name" readonly>
+                  <input class="form-control" type="text" placeholder="{{ctrl.sideloadNames()}}" readonly>
                   <span class="input-group-btn">
                     <span class="btn btn-default btn-file"> Browse
-                      <input ng-model="ctrl.sideload_file" ngf-select type="file" id="sideload-file"
-                        ngf-accept="'.json'" ngf-pattern="'.json'"> </span>
+                      <input ng-model="ctrl.sideload_files" ngf-select type="file" id="sideload-file"
+                        ngf-accept="'.json'" ngf-pattern="'.json'" ngf-multiple="true">  </span>
                   </span>
                 </div>
               </div>

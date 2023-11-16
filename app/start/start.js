@@ -11,6 +11,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             vm.run_beta = false;
 
             vm.upload_sideload_file = false;
+            vm.sideload_files = [];
 
             // Defaullt values
             vm.submission = {
@@ -74,8 +75,8 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                     vm.submission.genefinder = 'none';
                 }
 
-                if (vm.run_beta && vm.sideload_file) {
-                    vm.submission.sideload = vm.sideload_file;
+                if (vm.sideload_files) {
+                    vm.submission.sideload = vm.sideload_files;
                 }
 
                 if (vm.email) {
@@ -154,6 +155,12 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 return vm.isFastaFile(vm.file.name);
             }
 
+            vm.sideloadNames = function () {
+                if (vm.sideload_files.length == 0) {
+                    return "";
+                }
+                return vm.sideload_files.map((f) => f.name).join(", ");
+            }
 
             vm.validJob = function () {
                 if (vm.upload_file) {
