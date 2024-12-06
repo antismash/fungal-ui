@@ -26,7 +26,6 @@
             <label class="col-md-2" for="email">Email address (optional)</label>
           </div>
         </fieldset>
-        <!--
         <fieldset>
           <legend>antiSMASH beta features</legend>
           <div class="form-group row">
@@ -35,7 +34,6 @@
             </div>
           </div>
         </fieldset>
-        -->
         <fieldset>
           <legend>Data input</legend>
           <div class="form-group row">
@@ -84,7 +82,10 @@
                 </span>
               </div>
             </div>
-            <label for="gff" class="col-md-5">Feature annotations (optional, GFF3 format)</label>
+            <label for="gff" class="col-md-5">
+              Feature annotations (required for FASTA inputs, GFF3 format)<br>
+              No GFF? Try <a href="https://bioinf.uni-greifswald.de/webaugustus/">WebAUGUSTUS</a>.
+            </label>
           </div>
           <div class="form-group row">
             <div class="col-md-3 col-md-offset-1">
@@ -148,7 +149,7 @@
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset ng-show="(ctrl.slow_features | filter:ctrl.filterFeatureByStatus).length > 0">
           <legend>Time-consuming features <small>(Increasing run-time from minutes to hours per chromosome)</small>
           </legend>
           <div class="form-group row">

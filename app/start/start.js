@@ -30,7 +30,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             ];
 
             vm.slow_features = [
-                { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false, stable: true, beta: true },
+                { id: 'cassis', description: 'Cluster-border prediction based on transcription factor binding sites (CASSIS)', default: false, stable: true, beta: false },
             ];
 
             for (var i = 0; i < vm.extra_features.length; i++) {
@@ -53,8 +53,8 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
             ];
             vm.hmmdetection_strictness = 1;
 
-            vm.submit = function (form) {
-                vm.submission.jobtype = vm.run_beta ? 'antismash7' : 'antismash7';
+            vm.submit = function(form) {
+                vm.submission.jobtype = vm.run_beta ? 'antismash8' : 'antismash7';
                 vm.active_submission = true;
                 vm.errror_message = null;
 
@@ -64,16 +64,9 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                     vm.submission.seq = vm.file;
                     if (vm.gff_file) {
                         vm.submission.gff3 = vm.gff_file;
-                        vm.submission.genefinder = 'none';
-                    }
-                    else {
-                        if (vm.isFastaFile(vm.file.name)) {
-                            vm.submission.genefinder = "glimmerhmm";
-                        }
                     }
                 } else {
                     vm.submission.ncbi = vm.ncbi;
-                    vm.submission.genefinder = 'none';
                 }
 
                 if (vm.sideload_files) {
@@ -127,7 +120,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                     String.prototype.endsWith = function (search_string, position) {
                         var subject = this.toString();
                         if (typeof position !== 'number' || !isFinite(postion) || Math.floor(postion) !== postion || postion > subject.length) {
-                            postion = subject.length;
+                            position = subject.length;
                         }
                         position -= search_string.length;
                         var last_index = filename.lastIndexOf(search_string);
@@ -163,9 +156,12 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                 return vm.sideload_files.map((f) => f.name).join(", ");
             }
 
-            vm.validJob = function () {
+            vm.validJob = function() {
                 if (vm.upload_file) {
                     if (!vm.file) {
+                        return false;
+                    }
+                    if (vm.isFastaFile(vm.file.name) && !vm.gff_file) {
                         return false;
                     }
                 } else {
