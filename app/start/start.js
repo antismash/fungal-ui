@@ -162,6 +162,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                         return false;
                     }
                     if (vm.isFastaFile(vm.file.name) && !vm.gff_file) {
+                        vm.error_message = "Need to provide a GFF file for gene annotations with your FASTA input";
                         return false;
                     }
                 } else {
@@ -169,6 +170,7 @@ angular.module('antismash.ui.bacterial.as_start', ['ngFileUpload'])
                         return false;
                     }
                 }
+                vm.error_message = null;
                 return true;
             }
 
