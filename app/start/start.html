@@ -151,17 +151,6 @@
           </div>
         </fieldset>
 
-        <fieldset ng-show="(ctrl.slow_features | filter:ctrl.filterFeatureByStatus).length > 0">
-          <legend>Time-consuming features <small>(Increasing run-time from minutes to hours per chromosome)</small>
-          </legend>
-          <div class="form-group row">
-            <div class="col-md-6" ng-repeat="c in ctrl.slow_features | filter: ctrl.filterFeatureByStatus">
-              <label class="checkbox"><input type="checkbox" ng-model="ctrl.submission[c.id]"
-                  ng-disabled="c.disabled">{{c.description}}</label>
-            </div>
-          </div>
-        </fieldset>
-
         <fieldset>
           <div class="form-group row offset-top" ng-show="ctrl.error_message">
             <p class="error-message bg-danger">{{ ctrl.error_message }}</p>
